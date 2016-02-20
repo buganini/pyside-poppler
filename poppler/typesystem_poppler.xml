@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<typesystem package="poppler">
+	<load-typesystem name="typesystem_core.xml" generate="no" />
+	<load-typesystem name="typesystem_gui.xml" generate="no" />
+	<namespace-type name="Poppler">
+		<object-type name="Document" />
+		<object-type name="Page" />
+	</namespace-type>
+</typesystem>
