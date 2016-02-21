@@ -4,6 +4,8 @@
 	<load-typesystem name="typesystem_gui.xml" generate="no" />
 	<namespace-type name="Poppler">
 		<object-type name="Document" />
-		<object-type name="Page" />
+		<object-type name="Page">
+			<enum-type name="Rotation" />
+		</object-type>
 	</namespace-type>
 </typesystem>
