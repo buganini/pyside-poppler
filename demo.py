@@ -2,7 +2,7 @@
 
 import sys
 from PySide import QtGui, QtCore
-import poppler
+import pyside_poppler as poppler
 
 usage = """
 Demo to load a PDF and display the first page.

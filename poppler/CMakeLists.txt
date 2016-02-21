@@ -1,10 +1,10 @@
 project(poppler)
 
 set(poppler_SRC
-    ${CMAKE_CURRENT_BINARY_DIR}/poppler/poppler_module_wrapper.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/poppler/poppler_wrapper.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/poppler/poppler_document_wrapper.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/poppler/poppler_page_wrapper.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/pyside_poppler/pyside_poppler_module_wrapper.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/pyside_poppler/poppler_wrapper.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/pyside_poppler/poppler_document_wrapper.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/pyside_poppler/poppler_page_wrapper.cpp
 )
 
 set(poppler_INCLUDE_DIRECTORIES
@@ -42,3 +42,18 @@ add_custom_command(OUTPUT ${poppler_SRC}
                    COMMENT "Running generator for libpoppler..."
                   )
 
+
+if (NOT SITE_PACKAGE)
+    execute_process(
+        COMMAND ${SHIBOKEN_PYTHON_INTERPRETER} -c "from distutils import sysconfig; \\
+            print(sysconfig.get_python_lib(1,0,prefix='${CMAKE_INSTALL_PREFIX}'))"
+        OUTPUT_VARIABLE SITE_PACKAGE
+        OUTPUT_STRIP_TRAILING_WHITESPACE)
+    if (NOT SITE_PACKAGE)
+        message(FATAL_ERROR "Could not detect Python module installation directory.")
+    elseif (APPLE)
+        message(STATUS "!!! The generated bindings will be installed on ${SITE_PACKAGE}, is it right!?")
+    endif()
+endif()
+
+install(TARGETS poppler LIBRARY DESTINATION ${SITE_PACKAGE})

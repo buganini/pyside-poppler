@@ -39,4 +39,3 @@ include(${QT_USE_FILE})
 enable_testing()
 
 add_subdirectory(poppler)
-
