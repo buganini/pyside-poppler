@@ -1,6 +1,13 @@
 Dependencies:
 	apt-get install libpyside1.2 libpyside-dev libpoppler-qt4-4 libpoppler-qt4-dev shiboken libshiboken-dev
 
+Installation:
+	mkdir build
+	cd build
+	cmake ..
+	make
+	sudo make install
+
 Reference:
 	http://qt-devnet.developpez.com/tutoriels/python/pyside/binding-shiboken/
 	http://pyside.github.io/docs/api-extractor/typesystem.html
