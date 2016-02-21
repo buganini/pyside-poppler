@@ -20,8 +20,8 @@ def pdf_view(filename):
     label = QtGui.QLabel()
 
     doc = poppler.Poppler.Document.load(filename)
-    # doc.setRenderHint(poppler.Poppler.Document.Antialiasing)
-    # doc.setRenderHint(poppler.Poppler.Document.TextAntialiasing)
+    doc.setRenderHint(poppler.Poppler.Document.Antialiasing)
+    doc.setRenderHint(poppler.Poppler.Document.TextAntialiasing)
 
     page = doc.page(0)
     image = page.renderToImage()

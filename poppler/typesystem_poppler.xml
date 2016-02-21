@@ -3,7 +3,9 @@
 	<load-typesystem name="typesystem_core.xml" generate="no" />
 	<load-typesystem name="typesystem_gui.xml" generate="no" />
 	<namespace-type name="Poppler">
-		<object-type name="Document" />
+		<object-type name="Document">
+			<enum-type name="RenderHint" />
+		</object-type>
 		<object-type name="Page">
 			<enum-type name="Rotation" />
 		</object-type>
