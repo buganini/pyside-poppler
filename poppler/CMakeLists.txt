@@ -28,7 +28,7 @@ set(poppler_LINK_LIBRARIES
 
 include_directories(poppler ${poppler_INCLUDE_DIRECTORIES})
 add_library(poppler MODULE ${poppler_SRC})
-set_property(TARGET poppler PROPERTY PREFIX "")
+set_property(TARGET poppler PROPERTY PREFIX "pyside_")
 target_link_libraries(poppler ${poppler_LINK_LIBRARIES})
 
 add_custom_command(OUTPUT ${poppler_SRC}
