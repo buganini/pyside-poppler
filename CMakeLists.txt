@@ -17,7 +17,7 @@ endif()
 
 if(CMAKE_HOST_UNIX)
     option(ENABLE_GCC_OPTIMIZATION "Enable specific GCC flags to optimization library size and performance. Only available on Release Mode" 0)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fvisibility=hidden -Wno-strict-aliasing -fpermissive -g")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fvisibility=hidden -Wno-strict-aliasing -fpermissive")
     set(CMAKE_CXX_FLAGS_DEBUG "-g")
     if(ENABLE_GCC_OPTIMIZATION)
         set(CMAKE_BUILD_TYPE Release)
