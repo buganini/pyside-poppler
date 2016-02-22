@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.6)
 
 set( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" "${CMAKE_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 
-find_package(PythonLibs 2.7 REQUIRED)
+find_package(PythonLibs REQUIRED)
 find_package(Shiboken REQUIRED)
 find_package(PySide REQUIRED)
 find_package(Qt4 4.6.2 REQUIRED)
