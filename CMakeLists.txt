@@ -38,4 +38,12 @@ include(${QT_USE_FILE})
 
 enable_testing()
 
+set(SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
+set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
+set(OUTPUT      "${CMAKE_CURRENT_BINARY_DIR}/build/timestamp")
+
+configure_file(${SETUP_PY_IN} ${SETUP_PY})
+
+install(CODE "execute_process(COMMAND ${SHIBOKEN_PYTHON_INTERPRETER} ${SETUP_PY} install)")
+
 add_subdirectory(poppler)

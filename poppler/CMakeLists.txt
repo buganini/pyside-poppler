@@ -39,21 +39,5 @@ add_custom_command(OUTPUT ${poppler_SRC}
                    --output-directory=${CMAKE_CURRENT_BINARY_DIR}
                    ${CMAKE_CURRENT_SOURCE_DIR}/typesystem_poppler.xml
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                   COMMENT "Running generator for libpoppler..."
+                   COMMENT "Running generator for pyside_poppler..."
                   )
-
-
-if (NOT SITE_PACKAGE)
-    execute_process(
-        COMMAND ${SHIBOKEN_PYTHON_INTERPRETER} -c "from distutils import sysconfig; \\
-            print(sysconfig.get_python_lib(1,0,prefix='${CMAKE_INSTALL_PREFIX}'))"
-        OUTPUT_VARIABLE SITE_PACKAGE
-        OUTPUT_STRIP_TRAILING_WHITESPACE)
-    if (NOT SITE_PACKAGE)
-        message(FATAL_ERROR "Could not detect Python module installation directory.")
-    elseif (APPLE)
-        message(STATUS "!!! The generated bindings will be installed on ${SITE_PACKAGE}, is it right!?")
-    endif()
-endif()
-
-install(TARGETS poppler LIBRARY DESTINATION ${SITE_PACKAGE})

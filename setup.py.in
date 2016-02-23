@@ -1,0 +1,17 @@
+from distutils.core import setup, Extension
+from distutils.command.build_ext import build_ext
+import shutil, os, glob
+
+class dummy_build_ext(build_ext):
+	def build_extension(self, ext):
+		build_lib = os.path.join('${CMAKE_CURRENT_BINARY_DIR}', self.build_lib)
+		so = glob.glob("${CMAKE_CURRENT_BINARY_DIR}/poppler/pyside_poppler.*")[0]
+		os.makedirs(build_lib)
+		shutil.copyfile(so, os.path.join(build_lib, os.path.basename(so)))
+
+setup(name='pyside_poppler',
+	version='${PACKAGE_VERSION}',
+	package_dir={ '': '${CMAKE_CURRENT_BINARY_DIR}' },
+	cmdclass={'build_ext': dummy_build_ext},
+	ext_modules=[Extension('pyside_poppler', [])]
+)
